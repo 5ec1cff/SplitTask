@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name" translatable="false">SplitTask</string>
+    <string name="tile_label">Split Task</string>
+</resources>
