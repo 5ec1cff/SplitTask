@@ -173,11 +173,13 @@ public class Entry extends BroadcastReceiver implements IXposedHookLoadPackage {
 
                         // FIXME: stub activity maybe still exist in task
 
-                        var bottom = XposedHelpers.callMethod(targetTask, "getChildAt", 0);
-                        if (activityRecordClass.isInstance(bottom)) {
-                            if (STUB_ACTIVITY.equals(XposedHelpers.getObjectField(bottom, "mActivityComponent"))) {
-                                // skip
-                                return;
+                        if (count == 2) {
+                            var bottom = XposedHelpers.callMethod(targetTask, "getChildAt", 0);
+                            if (activityRecordClass.isInstance(bottom)) {
+                                if (STUB_ACTIVITY.equals(XposedHelpers.getObjectField(bottom, "mActivityComponent"))) {
+                                    // skip
+                                    return;
+                                }
                             }
                         }
 
